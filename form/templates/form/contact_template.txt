@@ -1,0 +1,9 @@
+Hi {{ name }}
+
+Thank You for connecting.
+
+Your Email:{{ email_id }}
+
+Your DOB:{{ date_of_birth }}
+
+Your Number:{{ phone_number }}

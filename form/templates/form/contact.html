@@ -1,0 +1,60 @@
+<!-- <head>
+ </head>
+
+<body>
+<section id="contact" class="content-section text-center" style="padding-top: 70px">
+
+<div class="container" style="background-color: whitesmoke">
+    <div class="well well-sm" style="background-color: snow">
+      <h3><strong>Contact Us</strong></h3>
+    </div>
+      <div class="col-md-5" style="background-color: whitesmoke">
+       <h4><strong>Get in Touch</strong></h4>
+
+        <form role="form" action="" method="post" onSubmit="alert('Thank you for your feedback.');">
+            {% csrf_token %}
+            {{ form.as_p }}
+          <button class="btn btn-default" type="submit" name="button">
+              <i class="fa fa-paper-plane-o" aria-hidden="true"></i> Submit
+          </button>
+        </form><br>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+-->
+
+{% load widget_tweaks %}
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+        integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <title>Aglofocus</title>
+</head><body  style="background-color: #d6d6d6">
+<div style="margin-top: 125px;margin-left: 125px;margin-right: 125px">
+  <p>Your age should be 18+ else you will not recieve mail.</p>
+<form method="post" novalidate>
+  {% csrf_token %}
+
+  {% for hidden_field in form.hidden_fields %}
+    {{ hidden_field }}
+  {% endfor %}
+
+  {% for field in form.visible_fields %}
+    <div class="form-group">
+      {{ field.label_tag }}
+      {% render_field field class="form-control" %}
+      {% if field.help_text %}
+        <small class="form-text text-muted">{{ field.help_text }}</small>
+      {% endif %}
+    </div>
+  {% endfor %}
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+</body>
